@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link type="text/css" rel="stylesheet"
+      href="/materialize/css/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet"
+      href="/materialize/css/materialize.min.css" media="screen,projection" />
+
+      <style type="text/css">
+        table{
+        width: 100%;
+    }
+    table td, table th{
+        border: 1px solid green;
+    }
+
+    table th{
+        background: hsl(180, 30%, 50%);
+    }
+
+    </style>
+  </head>
+  <body>
+    <h3>Controle de Produtos</h3><br />
+    <h5>Descrição do Produto:</h5>
+
+    <div th:each="produto : ${objProduto}" >
+      <div class="row">
+          <div class="input-field col s3">
+            <div class="input-field col s12">
+            </div>
+              <p><span th:text="${produto.descricao}"></span></p>
+          </div>
+        </br></br></br>
+      </div>
+
+      <div>
+      <table class="striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CodBarras</th>
+                <th>Quantidade</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+                <td th:text="${produto.id}"></td>
+                <td><span th:text="${produto.nome}"></span></td>
+                <td th:text="${produto.codBarras}"></td>
+                <td th:text="${produto.quantidade}"></td>
+                <td><a th:href="@{/atualizarproduto/{id}(id=${produto.id})}">Editar</a></td>
+                <td><a th:href="@{/deletarproduto/{id}(id=${produto.id})}">Excluir</a></td>
+        </tbody>
+    </table>
+     </div>
+  </div>
+    
+  </br>
+  <div>
+    <a class="waves-effect waves-light btn" href="/listarprodutos">Retornar</a>
+    </div>
+
+
+
+
+      <script type="text/javascript"
+        src="/materialize/js/materialize.js"></script>
+      <script type="text/javascript"
+        src="/materialize/js/materialize.min.js"></script>
+
+    </body>
+  </html>

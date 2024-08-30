@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.thymeleaf.org "
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <title>Produtos</title>
+
+        
+    <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet"
+            href="/materialize/css/materialize.min.css"
+            media="screen,projection" />
+        <link type="text/css" rel="stylesheet"
+            href="/materialize/css/materialize.css" media="screen,projection" />
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style type="text/css">
+        table{
+        width: 100%;
+    }
+    table td, table th{
+        border: 1px solid green;
+    }
+
+    table th{
+        background: hsl(180, 30%, 50%);
+    }
+
+    </style>
+    
+
+    </head>
+    
+    <body>
+        <h1>Gerenciamento de Produtos</h1>
+        
+        <div th:each="mensagem : ${msgPraIterar}">
+            <span th:text="${mensagem}"></span>
+        </div>
+        </br>
+        </br>
+        
+    <div class="row">    
+        <form action="salvarproduto" id="formProduto" method="post" th:object="${objProduto}"
+        enctype="multipart/form-data">
+        <div class="input-field col s12">
+            <label for="id" class="active">ID</label>
+            <input  name="id" th:field="*{id}" readonly="readonly" class="validade">
+        </div>
+
+        <div class="input-field col s6">
+            <label for="nome" class="active">Nome</label>
+            <input placeholder="  Informe o nome do produto" name="nome" th:field="*{nome}" class="validade">
+        </div>
+
+        <div class="input-field col s6">
+            <label for="descricao" class="active">Descrição</label>
+            <input placeholder="  Informe a descricao" name="descricao" th:field="*{descricao}" class="validade">
+        </div>
+
+        <div class="input-field col s6">
+            <label for="codBarras" class="active">Codigo de Barras</label>
+            <input placeholder="Informe o código do produto" id="codBarras" th:field="*{codBarras}">
+        </div>
+
+        <div class="input-field col s6">
+            <label for="preco" class="acive">Preço</label>
+            <input placeholder="  Informe o preco do produto" name="preco" type="number" th:field="*{preco}" class="validade">
+        </div>
+
+        <div class="input-field col s6">
+            <label for="quantidade" class="acive">Quantidade</label>
+            <input placeholder="  Quantidade" name="quantidade" type="number" th:field="*{quantidade}" class="validade">
+        </div>
+        
+
+        <div class="col s12">
+            <input class="waves-effect waves-light btn" type="submit" value="Salvar">
+            <a class="waves-effect waves-light btn"
+                            href="/index">Retornar</a>
+        </div>
+    </form>
+    </div>
+        <br />
+        <br />
+
+        <div class="row">
+            <form action="pesquisarproduto" method="get" th:object="${objProduto}"
+                class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <fieldset>
+                            <legend>Campo de pesquisa</legend>
+                        <label for="nomeTelaPesquisa" class="active">Pesquisar</label>
+                        <input placeholder="Nome ou" type="text" input name="nome" id="nomeTelaPesquisa"
+                        class="validade" th:value="${nomeTelaPesquisa}">
+
+                        <input placeholder="Código de Barras" type="number" input name="codBarras" id="codBarras"
+                        class="validade" th:value="${codBarras}">
+                        </fieldset></br>
+
+                        <input class="waves-effect waves-light btn"
+                            type="submit" value="Buscar">
+
+                            <a class="waves-effect waves-light btn"
+                            href="/listarprodutos">Listar Produtos</a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
+        <div th:if="${listaProdutosFront != null and !#lists.isEmpty(listaProdutosFront)}">
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CodBarras</th>
+                        <th>Quantidade</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="produto : ${listaProdutosFront}">
+                        <td th:text="${produto.id}"></td>
+                        <td> <a th:href="@{descricaoproduto/{id}( id = ${produto.id})}">  <span th:text="${produto.nome}"></span> </a></td>
+                        <td th:text="${produto.codBarras}"></td>
+                        <td th:text="${produto.quantidade}"></td>
+                        <td><a th:href="@{/atualizarproduto/{id}(id=${produto.id})}">Editar</a></td>
+                        <td><a th:href="@{/deletarproduto/{id}(id=${produto.id})}">Excluir</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript"
+            src="/materialize/js/materialize.min.js"></script>
+        <script type="text/javascript"
+            src="/materialize/js/materialize.js"></script>
+
+            
+            
+        
+    </body>
+</html>

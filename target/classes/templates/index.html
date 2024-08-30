@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+   
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+        /* Centraliza verticalmente e horizontalmente */
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ajusta a altura para 100% da viewport */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        /* Define o fundo da página como preto e ajusta a cor do texto */
+        body {
+            background-color: black; /* Fundo preto */
+            color: white; /* Texto branco */
+        }
+
+        /* Opcional: ajustar a cor do texto dos links para contrastar com o fundo preto */
+        a {
+            color: white; /* Links em branco para visibilidade */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container center-content">
+        <h1>Desafio Everymind</h1>
+        <a class="waves-effect waves-light btn blue" href="/iniciocliente">Cadastro de cliente</a><br>
+        <a class="waves-effect waves-light btn blue" href="/inicioestoque">Cadastro de estoque</a><br>
+        <a class="waves-effect waves-light btn red darken-2" href="/gerarrelatorio">Relatório</a>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.js"></script>
+</body>
+</html>
