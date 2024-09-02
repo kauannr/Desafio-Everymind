@@ -3,13 +3,13 @@
 <head>
     <title>Page Title</title>
    
-    <!--Import Google Icon Font-->
+    <!-- Import Google Icon Font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
+    <!-- Import materialize.css -->
     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css" media="screen,projection"/>
 
-    <!--Let browser know website is optimized for mobile-->
+    <!-- Let browser know website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <style>
@@ -21,17 +21,74 @@
             align-items: center;
             height: 100vh; /* Ajusta a altura para 100% da viewport */
             text-align: center; /* Centraliza o texto */
+            padding: 20px;
+            background-color: black; /* Cor de fundo do container preto */
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para realismo */
+            color: white; /* Cor do texto dentro do container */
         }
 
-        /* Define o fundo da página como preto e ajusta a cor do texto */
+        /* Define o fundo da página como branco */
         body {
-            background-color: black; /* Fundo preto */
-            color: white; /* Texto branco */
+            background-color: white; /* Fundo branco */
+            color: black; /* Texto preto para contraste */
+            font-family: 'Roboto', sans-serif; /* Fonte para legibilidade */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        /* Opcional: ajustar a cor do texto dos links para contrastar com o fundo preto */
+        /* Estilo para o título com sombra e animação de flutuação */
+        h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra do texto */
+            animation: float 3s ease-in-out infinite; /* Animação de flutuação */
+        }
+
+        /* Animação de flutuação para o título */
+        @keyframes float {
+            0%, 100% {
+                transform: translatey(0px); /* Posição inicial e final */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra inicial e final */
+            }
+            50% {
+                transform: translatey(-10px); /* Move para cima */
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Sombra mais intensa para flutuação */
+            }
+        }
+
+        /* Estilo para os botões */
+        .btn {
+            margin: 10px 0; /* Espaçamento entre botões */
+            padding: 10px 0; /* Ajuste do padding para centralizar o texto */
+            width: 200px; /* Largura dos botões para consistência */
+            height: 50px; /* Altura dos botões para consistência */
+            line-height: 50px; /* Alinha o texto verticalmente no centro */
+            border-radius: 5px; /* Bordas arredondadas para botões */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra para os botões */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transições para interatividade */
+            color: white; /* Garante que o texto dos botões seja sempre branco */
+            text-align: center; /* Centraliza o texto horizontalmente */
+        }
+
+        /* Efeito de hover para botões */
+        .btn:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Aumenta a sombra ao passar o mouse */
+            filter: brightness(1.1); /* Aumenta o brilho ao passar o mouse */
+        }
+
+        /* Estilo específico para o botão de relatório */
+        .btn.red.darken-2 {
+            background-color: #e53935 !important; /* Cor específica para o botão de relatório */
+            color: white; /* Garante que o texto permaneça legível */
+        }
+
+        /* Ajusta a cor do texto dos links para contraste com o fundo preto do container */
         a {
             color: white; /* Links em branco para visibilidade */
+            display: inline-block; /* Garante que a largura e altura sejam aplicadas corretamente */
         }
     </style>
 
@@ -44,7 +101,7 @@
         <a class="waves-effect waves-light btn blue" href="/inicioestoque">Cadastro de estoque</a><br>
         <a class="waves-effect waves-light btn red darken-2" href="/gerarrelatorio">Relatório</a>
     </div>
-    <!--JavaScript at end of body for optimized loading-->
+    <!-- JavaScript at end of body for optimized loading -->
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.js"></script>
 </body>
